@@ -1,6 +1,6 @@
 # Admin_Project
 
-+University_Project
++ University_Project
 
 ## Education Purpose
 * MySQL DMBS를 설치하고 JDBC를 이용해 자바 프로그램에서 데이터 베이스 내용에 접근하는 방법
@@ -18,7 +18,7 @@
     ▸ 재고: 등록된 물품의 입고(입고 거래처 포함), 출고(출고 거래처 포함), 현재 수량
 
 
-* 개발 환경
+### 개발 환경
 - 사용 언어 : Java
 - 실행 환경 : Eclipse IDE 2020-06 (4.16.0)
 
