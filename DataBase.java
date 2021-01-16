@@ -9,9 +9,9 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class DataBase {
-	public static Connection con;	//DB¶û ÀÌÅ¬¸³½º ¿¬°á
-	public static Statement ps;		//µ¿Àû Äõ¸®¸¦ ÀÌ¿ëÇØ º¸±â
-	public static ResultSet rs;		// µ¥ÀÌÅÍ ÁÖ¼Ò°ª ÀÌ¿ëÇÏ±â À§ÇÔ
+	public static Connection con;	//DBë‘ ì´í´ë¦½ìŠ¤ ì—°ê²°
+	public static Statement ps;		//ë™ì  ì¿¼ë¦¬ë¥¼ ì´ìš©í•´ ë³´ê¸°
+	public static ResultSet rs;		// ë°ì´í„° ì£¼ì†Œê°’ ì´ìš©í•˜ê¸° ìœ„í•¨
 	
 	public static PreparedStatement pstmtAdd    = null;
 	public static PreparedStatement pstmtDel    = null;
@@ -19,16 +19,16 @@ public class DataBase {
 	
 	public DataBase() {
 		String id = "root";
-		String pass = "rjsdnd0614";
+		String pass = "pass_word";
 		String url = "jdbc:mysql://localhost:3306/mnu?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false";
 		
 		try {
-			///////// mysql version 8.0.22ÀÇ forname, url ////////
+			///////// mysql version 8.0.22ì˜ forname, url ////////
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					
 					con = DriverManager.getConnection(url, id, pass);
 
-					System.out.println("DB¿¬°á ¼º°ø");
+					System.out.println("DBì—°ê²° ì„±ê³µ");
 					
 					ps = con.createStatement();
 					
@@ -38,7 +38,7 @@ public class DataBase {
 	}
 	
 	public static void Load(DefaultTableModel model) {
-		model.setNumRows(0);  // ¸ğµ¨ Å×ÀÌºí ÃÊ±âÈ­
+		model.setNumRows(0);  // ëª¨ë¸ í…Œì´ë¸” ì´ˆê¸°í™”
 		String sql = "select * from admin";
 		
 		try {
@@ -66,15 +66,15 @@ public class DataBase {
 		try{
 
 			pstmtAdd = con.prepareStatement("insert into admin(code, company, re_name, re_num, keeper, phone, email) values(?,?,?,?,?,?,?)");
-			pstmtAdd.setInt(1, code);			//ÄÚµå
-			pstmtAdd.setString(2, company);		//»óÈ£
-			pstmtAdd.setString(3, re_name);		//´ëÇ¥ÀÚ¸í
-			pstmtAdd.setString(4, re_num);		//µî·Ï»óÈ£
-			pstmtAdd.setString(5, keeper);		//´ëÇ¥ÀÚ
-			pstmtAdd.setString(6, phone);		//ÈŞ´ëÆù
-			pstmtAdd.setString(7, email);		//ÀÌ¸ŞÀÏ
+			pstmtAdd.setInt(1, code);			//ì½”ë“œ
+			pstmtAdd.setString(2, company);		//ìƒí˜¸
+			pstmtAdd.setString(3, re_name);		//ëŒ€í‘œìëª…
+			pstmtAdd.setString(4, re_num);		//ë“±ë¡ìƒí˜¸
+			pstmtAdd.setString(5, keeper);		//ëŒ€í‘œì
+			pstmtAdd.setString(6, phone);		//íœ´ëŒ€í°
+			pstmtAdd.setString(7, email);		//ì´ë©”ì¼
 
-//			´ëÀÔ¹ŞÀº Äõ¸®¸¦ ½ÇÇà -> ÀÔ·Â (insert)
+//			ëŒ€ì…ë°›ì€ ì¿¼ë¦¬ë¥¼ ì‹¤í–‰ -> ì…ë ¥ (insert)
 
 			pstmtAdd.executeUpdate();
 			
@@ -93,10 +93,10 @@ public class DataBase {
 		try{
 			
 			pstmtDel = con.prepareStatement("delete from admin where (code ="   +   code   +   ")");
-//			code °ªÀ» ºñ±³ÇØ¼­ »èÁ¦ÇÔ
+//			code ê°’ì„ ë¹„êµí•´ì„œ ì‚­ì œí•¨
 // 			pstmtDel.setInt(1, code);
 			
-// 			´ëÀÔ¹ŞÀº Äõ¸®¸¦ ½ÇÇà-> »èÁ¦ (delete)
+// 			ëŒ€ì…ë°›ì€ ì¿¼ë¦¬ë¥¼ ì‹¤í–‰-> ì‚­ì œ (delete)
 			pstmtDel.executeUpdate();
 
 		}catch(Exception e){
@@ -107,17 +107,17 @@ public class DataBase {
 	public static void update(String code, String company,  String re_name, String re_num, String keeper, String phone, String email){
 		try{
 			pstmtUpdate = con.prepareStatement("update admin set company = ?, re_name = ?, re_num = ?, keeper = ?, phone = ?, email= ? where code = ?");
-//			°ª ´ëÀÔ
+//			ê°’ ëŒ€ì…
 			pstmtUpdate.setString(1, company);
 			pstmtUpdate.setString(2, re_name);
-//			? ¼ø¼­ Áß¿ä È®ÀÎ ÇÊ¿äÇÔ
+//			? ìˆœì„œ ì¤‘ìš” í™•ì¸ í•„ìš”í•¨
 			pstmtUpdate.setString(3, re_num);
 			pstmtUpdate.setString(4, keeper);
 			pstmtUpdate.setString(5, phone);
 			pstmtUpdate.setString(6, email);
 			pstmtUpdate.setString(7, code);
 			
-//			Äõ¸® ½ÇÇà
+//			ì¿¼ë¦¬ ì‹¤í–‰
 			pstmtUpdate.executeUpdate();
 
 		}catch(Exception e){
@@ -131,15 +131,15 @@ public class DataBase {
 	public static void update_item(String code, String product,  String in_pro, String out_pro, String now_pro){
 		try{
 			pstmtUpdate = con.prepareStatement("update admin set product = ?, in_pro = ?, out_pro = ?, now_pro = ? where code = ?");
-//			°ª ´ëÀÔ
+//			ê°’ ëŒ€ì…
 			pstmtUpdate.setString(1, product);
 			pstmtUpdate.setString(2, in_pro);
-//			? ¼ø¼­ Áß¿ä È®ÀÎ ÇÊ¿äÇÔ
+//			? ìˆœì„œ ì¤‘ìš” í™•ì¸ í•„ìš”í•¨
 			pstmtUpdate.setString(3, out_pro);
 			pstmtUpdate.setString(4, now_pro);;
 			pstmtUpdate.setString(5, code);
 			
-//			Äõ¸® ½ÇÇà
+//			ì¿¼ë¦¬ ì‹¤í–‰
 			pstmtUpdate.executeUpdate();
 
 		}catch(Exception e){
@@ -151,7 +151,7 @@ public class DataBase {
 	}
 	
 	public static void Load_item(DefaultTableModel model) {
-		model.setNumRows(0);  // ¸ğµ¨ Å×ÀÌºí ÃÊ±âÈ­
+		model.setNumRows(0);  // ëª¨ë¸ í…Œì´ë¸” ì´ˆê¸°í™”
 		String sql = "select * from admin";
 		
 		try {
