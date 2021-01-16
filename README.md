@@ -23,5 +23,5 @@
 - 실행 환경 : Eclipse IDE 2020-06 (4.16.0)
 
 ### Interaction Diagram
------------------------
+_____________________
 <img src = "https://user-images.githubusercontent.com/65653053/104172184-2da2fe80-5447-11eb-9247-645e11cbd157.png" width="50%"></img>
