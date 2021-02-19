@@ -25,11 +25,7 @@
 ### # Interaction Diagram
 <img src = "https://user-images.githubusercontent.com/65653053/104172184-2da2fe80-5447-11eb-9247-645e11cbd157.png" width="50%"></img>
 
+### illustration
 
-| 클래스     |  Main  | 
-| ---------- | ----------: |
-| 설명 |1. DataBase 연결을 위해 인스턴스화
-2. UI_Font 클래스
-3. StockFrame 프레임 연결을 위해 인스턴스화  |
-
+<img src = "https://user-images.githubusercontent.com/65653053/108462364-d737a400-72bf-11eb-9d1b-8f4bf6213f3f.png" width="50%"></img>
 
