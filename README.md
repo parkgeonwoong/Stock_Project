@@ -26,5 +26,8 @@
 <img src = "https://user-images.githubusercontent.com/65653053/104172184-2da2fe80-5447-11eb-9247-645e11cbd157.png" width="50%"></img>
 
 
-| 클래스 | Main |
-| 설명   | 이것  |
+| Header One | Header Two | Header Three | Header Four |
+| ---------- | :--------- | :----------: | ----------: |
+| Default | Left | Center | Right |
+
+
